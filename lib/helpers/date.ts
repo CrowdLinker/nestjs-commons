@@ -1,7 +1,7 @@
 import {
+  TIMEZONES,
   DATE_FORMAT,
   DATE_TIME_FORMAT,
-  TIMEZONE_TORONTO,
   DATE_TIME_ISO_FORMAT,
 } from '../constants/date';
 import isNull from 'lodash/isNull';
@@ -159,7 +159,7 @@ export const getDayjsDateByTimezone = (
  * @returns {Dayjs} Returns dayjs object.
  */
 export const getTorontoDayjsDate = (date?: string): Dayjs => {
-  return getDayjsDateByTimezone(TIMEZONE_TORONTO, date);
+  return getDayjsDateByTimezone(TIMEZONES.toronto, date);
 };
 
 /**

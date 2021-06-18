@@ -5,9 +5,7 @@
   "author": "Crowdlinker Inc.",
   "license": "MIT",
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig.json",
-    "publish:npm": "npm publish --access public",
-    "publish:next": "npm publish --access public --tag next"
+    "build": "rm -rf dist && tsc -p tsconfig.json"
   },
   "dependencies": {
     "lodash": "^4.17.21"

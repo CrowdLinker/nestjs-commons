@@ -83,6 +83,48 @@ export const CRON_EVERY_10PM = '0 22 * * *';
 export const CRON_EVERY_11PM = '0 23 * * *';
 
 /**
+ * Cron for every 1 hour.
+ *
+ * @constant
+ */
+export const CRON_EVERY_1_HOUR = '0 */1 * * *';
+
+/**
+ * Cron for every 3 hours.
+ *
+ * @constant
+ */
+export const CRON_EVERY_3_HOURS = '0 */3 * * *';
+
+/**
+ * Cron for every 4 hours.
+ *
+ * @constant
+ */
+export const CRON_EVERY_4_HOURS = '0 */4 * * *';
+
+/**
+ * Cron for every 6 hours.
+ *
+ * @constant
+ */
+export const CRON_EVERY_6_HOURS = '0 */6 * * *';
+
+/**
+ * Cron for every 8 hours.
+ *
+ * @constant
+ */
+export const CRON_EVERY_8_HOURS = '0 */8 * * *';
+
+/**
+ * Cron for every 12 hours.
+ *
+ * @constant
+ */
+export const CRON_EVERY_12_HOURS = '0 */12 * * ';
+
+/**
  * Cron for every day at 12 AM.
  *
  * @constant

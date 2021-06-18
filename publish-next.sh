@@ -1,5 +1,5 @@
 #!/bin/bash
-# Publish package version with a version (picks up from package.json so please update it before running this).
+# Publish package with the "next" tag.
 #
 # Copyright 2021 Crowdlinker
 #
@@ -11,4 +11,4 @@ cp README.md ./dist
 cp LICENSE ./dist
 cp package.json ./dist
 cd ./dist
-npm publish --access public
+npm publish --access public --tag next

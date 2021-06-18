@@ -27,11 +27,15 @@ export const DATE_FORMAT_INVOICE_ITEM = 'MM/DD/YYYY';
 export const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm:ss';
 
 /**
- * Toronto Timezone
+ * Timezones
  *
  * @constant
  */
-export const TIMEZONE_TORONTO = 'America/Toronto';
+export const TIMEZONES = {
+  utc: 'UTC',
+  toronto: 'America/Toronto',
+  newYork: 'America/New_York',
+};
 
 /**
  * Date with time ISO format.
