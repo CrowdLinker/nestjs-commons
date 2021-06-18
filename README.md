@@ -40,7 +40,7 @@ Helpers are common functions used throughout the codebase for performing some ba
 #### Example
 
 ```ts
-import { isLeapYear } from '@crowdlinker/nestjs-commons/helpers/date.helper';
+import { isLeapYear } from '@crowdlinker/nestjs-commons/helpers/date';
 
 if (isLeapYear()) {
   // const noOfDays = 366;
@@ -59,7 +59,7 @@ import { APP_FILTER } from '@nestjs/core';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { AppConfigService } from './config/app/config.service';
-import { HttpExceptionFilter } from '@crowdlinker/nestjs-commons/exceptions/filters/http-exception.filter';
+import { HttpExceptionFilter } from '@crowdlinker/nestjs-commons/exceptions/filters/http-exception';
 
 @Module({
   imports: [
@@ -82,12 +82,10 @@ export class AppModule {}
 **Note:** AppConfigService should implement AppConfigServiceInterface provided in `@crowdlinker/nestjs-commons/interfaces/config.interface. See example below:
 
 ```ts
-import { AppConfigServiceInterface } from '@crowdlinker/nestjs-commons/interfaces/config.interface';
-
 import { Injectable } from '@nestjs/common';
 import { AppConfig } from './config.interface';
 import { ConfigService } from '@nestjs/config';
-import { AppConfigServiceInterface } from '@crowdlinker/nestjs-commons/interfaces/config.interface';
+import { AppConfigServiceInterface } from '@crowdlinker/nestjs-commons/interfaces/config';
 
 @Injectable()
 export class AppConfigService implements AppConfigServiceInterface {

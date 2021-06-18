@@ -1,7 +1,4 @@
-import {
-  PaginationOrder,
-  PaginationInterface,
-} from '../interfaces/pagination.interface';
+import { PaginationOrder, PaginationInterface } from '../interfaces/pagination';
 
 /**
  * Constants defining pagination variables.

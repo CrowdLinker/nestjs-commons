@@ -1,4 +1,4 @@
-import { InputInterface } from './inputs.interface';
+import { InputInterface } from './inputs';
 
 /**
  * Enumerations defining variables in pagination interfaces.

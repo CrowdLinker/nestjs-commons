@@ -1,16 +1,16 @@
 import map from 'lodash/map';
-import { Dayjs } from 'dayjs';
-import flatMap from 'lodash/flatMap';
 import {
   SearchQuery,
   StringQuery,
   FindOperator as FindOperatorInterface,
-} from '../interfaces/query.interface';
-import { isUUID } from 'class-validator';
+} from '../interfaces/query';
+import { Dayjs } from 'dayjs';
 import {
   PaginatedData,
   PaginationQueryParamInterface,
-} from '../interfaces/pagination.interface';
+} from '../interfaces/pagination';
+import flatMap from 'lodash/flatMap';
+import { isUUID } from 'class-validator';
 import { classToPlain } from 'class-transformer';
 import { NotFoundException } from '@nestjs/common';
 import { SelectQueryBuilder, FindOperator, Raw } from 'typeorm';
@@ -170,9 +170,8 @@ export const generateRelationalSearchQueryBuilder = <T>(
   let newQueryBuilder: SelectQueryBuilder<T> = qb;
 
   // Get string based queries.
-  const convertedQueries = convertQueriedInputsToStringBasedQueries(
-    queriedInputs,
-  );
+  const convertedQueries =
+    convertQueriedInputsToStringBasedQueries(queriedInputs);
 
   // Add queries to query builder.
   convertedQueries.forEach((convertedQuery) => {

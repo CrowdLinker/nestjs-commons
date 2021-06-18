@@ -1,5 +1,5 @@
-import { PaginationResponseEntity } from '../../serializers/responses/pagination.serializer';
-import { PaginatedData } from '../../interfaces/pagination.interface';
+import { PaginatedData } from '../../interfaces/pagination';
+import { PaginationResponseEntity } from '../../serializers/responses/pagination';
 
 /**
  * Create success response and return a transformed response object.

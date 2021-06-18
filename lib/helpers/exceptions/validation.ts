@@ -1,8 +1,8 @@
-import { ValidationError } from 'class-validator';
 import {
   ValidationErrorEntity,
   DEFAULT_VALIDATION_ERROR_VARIABLES_TO_ASSIGN,
-} from '../../serializers/exceptions/validation.serializer';
+} from '../../serializers/exceptions/validation';
+import { ValidationError } from 'class-validator';
 import { UnprocessableEntityException } from '@nestjs/common';
 
 /**

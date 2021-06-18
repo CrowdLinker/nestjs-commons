@@ -1,4 +1,4 @@
-import { BaseException } from './base.exception';
+import { BaseException } from './base';
 
 export const JobExceptionError = {
   SIMILAR_JOB_ALREADY_ACTIVE:

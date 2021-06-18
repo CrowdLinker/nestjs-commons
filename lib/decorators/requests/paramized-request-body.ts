@@ -1,4 +1,4 @@
-import { InputInterface } from '../../interfaces/inputs.interface';
+import { InputInterface } from '../../interfaces/inputs';
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
 
 /**

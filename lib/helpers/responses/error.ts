@@ -1,4 +1,4 @@
-import { ErrorResponseEntity } from '../../serializers/responses/error.serializer';
+import { ErrorResponseEntity } from '../../serializers/responses/error';
 
 /**
  * Create error response and return a transformed response object.

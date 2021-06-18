@@ -2,7 +2,7 @@ import fs from 'fs';
 import { extname } from 'path';
 import { promisify } from 'util';
 import { BadRequestException } from '@nestjs/common';
-import { MulterFileFilter, UploadedFile } from '../interfaces/file.interface';
+import { MulterFileFilter, UploadedFile } from '../interfaces/file';
 import { CSV_EXTENSION, CSV_MIME_TYPES, FileErrors } from '../constants/file';
 
 /**

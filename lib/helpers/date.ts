@@ -6,7 +6,7 @@ import {
 } from '../constants/date';
 import isNull from 'lodash/isNull';
 import dayjs, { Dayjs } from 'dayjs';
-import { DateInterval } from '../interfaces/date.interface';
+import { DateInterval } from '../interfaces/date';
 
 /**
  * Convert a string or date object in a "YYYY-MM-DD" based

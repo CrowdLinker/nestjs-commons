@@ -1,4 +1,4 @@
-import { PaginatedMetaData } from '../../interfaces/pagination.interface';
+import { PaginatedMetaData } from '../../interfaces/pagination';
 
 /**
  * Success response type declaration.

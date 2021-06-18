@@ -1,7 +1,7 @@
 import {
   PaginationOrder,
   PaginationQueryParamInterface,
-} from '../interfaces/pagination.interface';
+} from '../interfaces/pagination';
 import { Pagination } from '../constants/pagination';
 import { PipeTransform, Injectable } from '@nestjs/common';
 
@@ -14,7 +14,8 @@ import { PipeTransform, Injectable } from '@nestjs/common';
  */
 @Injectable()
 export class PaginationPipe
-  implements PipeTransform<PaginationQueryParamInterface, any> {
+  implements PipeTransform<PaginationQueryParamInterface, any>
+{
   /**
    * Transform query data and return transformed
    * object with keys required for pagination.

@@ -1,5 +1,5 @@
 import get from 'lodash/get';
-import { ModelEntity } from '../../serializers/model.serializer';
+import { ModelEntity } from '../../serializers/model';
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
 
 /**

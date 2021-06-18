@@ -1,4 +1,4 @@
-import { SuccessResponseEntity } from '../../serializers/responses/success.serializer';
+import { SuccessResponseEntity } from '../../serializers/responses/success';
 
 /**
  * Create success response and return a transformed response object.

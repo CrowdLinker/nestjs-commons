@@ -5,8 +5,8 @@ import {
   ValidationPipe as NestValidationPipe,
 } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
+import { ValidationErrorEntity } from '../serializers/exceptions/validation';
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
-import { ValidationErrorEntity } from '../serializers/exceptions/validation.serializer';
 
 /**
  * Default Validation Pipe Options

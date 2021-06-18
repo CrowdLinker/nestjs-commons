@@ -7,7 +7,7 @@ import {
 import isObject from 'lodash/isObject';
 import isString from 'lodash/isString';
 import { Request, Response } from 'express';
-import { AppConfigServiceInterface } from '../../interfaces/config.interface';
+import { AppConfigServiceInterface } from '../../interfaces/config';
 
 /**
  * Used for catching all exceptions.

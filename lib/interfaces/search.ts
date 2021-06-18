@@ -1,4 +1,4 @@
-import { InputInterface } from './inputs.interface';
+import { InputInterface } from './inputs';
 
 /**
  * Search input variable type declaration.

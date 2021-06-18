@@ -5,7 +5,7 @@ import {
 } from 'class-validator';
 import { Dayjs } from 'dayjs';
 import { Injectable } from '@nestjs/common';
-import { toDateDayjs } from '../helpers/date.helper';
+import { toDateDayjs } from '../helpers/date';
 
 /**
  * Validation contraint dealing with end date based validations.
@@ -19,7 +19,8 @@ import { toDateDayjs } from '../helpers/date.helper';
 @ValidatorConstraint({ name: 'endDateGreaterThanStartDate', async: true })
 @Injectable()
 export class EndDateGreaterThanStartDate
-  implements ValidatorConstraintInterface {
+  implements ValidatorConstraintInterface
+{
   /**
    * Validate input.
    *
