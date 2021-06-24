@@ -1,10 +1,12 @@
 import {
+  Optional,
   HttpStatus,
   ArgumentMetadata,
   ValidationPipeOptions,
   ValidationPipe as NestValidationPipe,
 } from '@nestjs/common';
 import { ValidationError } from 'class-validator';
+import { ModelEntity } from '../serializers/model';
 import { ValidationErrorEntity } from '../serializers/exceptions/validation';
 import { HttpErrorByCode } from '@nestjs/common/utils/http-error-by-code.util';
 
@@ -34,7 +36,29 @@ export const validationPipeOptions: ValidationPipeOptions = {
  *
  * @extends {NestValidationPipe}
  */
-export class ValidationPipe extends NestValidationPipe {
+ export class ValidationPipe extends NestValidationPipe {
+  /**
+   * Custom entity types that don't need to be validated.
+   *
+   * @var {ModelEntity[]}
+   */
+  protected entityTypes: ModelEntity[] = [];
+
+  /**
+   * Creates an instance of the class.
+   *
+   * @param {ValidationPipeOptions} options
+   * @param {ModelEntity[]} entityTypes
+   */
+  constructor(
+    @Optional() options?: ValidationPipeOptions,
+    entityTypes: ModelEntity[] = [],
+  ) {
+    super();
+
+    this.entityTypes = entityTypes;
+  }
+
   /**
    * Transform request data and return transformed
    * object with keys required for searching entities.
@@ -47,7 +71,7 @@ export class ValidationPipe extends NestValidationPipe {
   async transform(value: any, metadata: ArgumentMetadata): Promise<any> {
     const { metatype } = metadata;
 
-    if ([].includes(metatype)) {
+    if (this.entityTypes.includes(metatype)) {
       return value;
     }
 
