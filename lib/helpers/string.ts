@@ -1,5 +1,7 @@
-import { default as lodashIsNull } from 'lodash/isNull';
+import map from 'lodash/map';
 import isString from 'lodash/isString';
+import snakeCase from 'lodash/snakeCase';
+import { default as lodashIsNull } from 'lodash/isNull';
 
 /**
  * Uppercase the first character in a string.
@@ -13,6 +15,46 @@ import isString from 'lodash/isString';
 export const ucFirst = (input: string): string => {
   return input.charAt(0).toUpperCase() + input.slice(1);
 };
+
+/**
+ * Uppercase the first character in words of a string.
+ *
+ * @function
+ *
+ * @param {string} input
+ *
+ * @returns {string}
+ */
+export const getWords = (input: string): string[] => {
+  return isString(input) ? snakeCase(input).split('_') : [];
+};
+
+/**
+ * Uppercase the first character in words of a string.
+ *
+ * @function
+ *
+ * @param {string} input
+ *
+ * @returns {string}
+ */
+export const ucWords = (input: string): string => {
+  return map(getWords(input), ucFirst).join(' ');
+};
+
+/**
+ * Converts string to sentence case.
+ *
+ * @function
+ *
+ * @param {string} input
+ *
+ * @returns {string}
+ */
+export const sentenceCase = (input: string): string => {
+  return ucFirst(getWords(input).join(' ').toLowerCase());
+};
+
 
 /**
  * Converts string to lowercase.
