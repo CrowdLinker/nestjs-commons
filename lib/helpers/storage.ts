@@ -1,9 +1,18 @@
 import fs from 'fs';
+import {
+  FileErrors,
+  CsvFileErrors,
+  ImageFileErrors,
+  CSV_EXTENSION,
+  PDF_EXTENSION,
+  CSV_MIME_TYPES,
+  IMAGE_MIME_TYPES,
+  IMAGE_EXTENSIONS,
+} from '../constants/file';
 import { extname } from 'path';
 import { promisify } from 'util';
 import { BadRequestException } from '@nestjs/common';
 import { MulterFileFilter, UploadedFile } from '../interfaces/file';
-import { CSV_EXTENSION, CSV_MIME_TYPES, FileErrors } from '../constants/file';
 
 /**
  * Check if a file exists at a given path.
@@ -126,6 +135,26 @@ export const isCSVExtension = (fileName: string): boolean =>
   CSV_EXTENSION === extname(fileName);
 
 /**
+ * Checks if the extension is '.pdf'.
+ *
+ * @param {string} fileName
+ *
+ * @returns {boolean}
+ */
+export const isPDFExtension = (fileName: string): boolean =>
+  PDF_EXTENSION === extname(fileName);
+
+/**
+ * Checks if the extension belongs to an image.
+ *
+ * @param {string} fileName
+ *
+ * @returns {boolean}
+ */
+export const isImageExtension = (fileName: string): boolean =>
+  IMAGE_EXTENSIONS.includes(extname(fileName));
+
+/**
  * Checks if the 'mime-type' matches an actual csv mime type
  *
  * @param {string} mimeType
@@ -134,6 +163,16 @@ export const isCSVExtension = (fileName: string): boolean =>
  */
 export const isCSVMimeType = (mimeType: string): boolean =>
   CSV_MIME_TYPES.includes(mimeType);
+
+/**
+ * Checks if the 'mime-type' matches an actual image mime type
+ *
+ * @param {string} mimeType
+ *
+ * @returns {boolean}
+ */
+export const isImageMimeType = (mimeType: string): boolean =>
+  IMAGE_MIME_TYPES.includes(mimeType);
 
 /**
  * Multer filter filter for csv files (used for validating uploaded files).
@@ -167,6 +206,33 @@ export const multerCsvFileFilter: MulterFileFilter = (
   } else {
     cb(null, false);
 
-    return cb(new BadRequestException(FileErrors.INVALID_FORMAT_CSV), false);
+    return cb(new BadRequestException(CsvFileErrors.INVALID_FORMAT), false);
+  }
+};
+
+/**
+ * Multer filter filter for image files (used for validating uploaded files).
+ *
+ * @param {any} req
+ * @param {UploadedFile} file
+ * @param {(error: Error | null, acceptFile: boolean) => void} cb
+ *
+ * @returns {void}
+ */
+export const multerImageFileFilter: MulterFileFilter = (
+  req: any,
+  file: UploadedFile,
+  cb: (error: Error | null, acceptFile: boolean) => void,
+) => {
+  const { mimetype, originalname } = file;
+
+  if (mimetype && mimetype.length && isImageMimeType(mimetype)) {
+    cb(null, true);
+  } else if (isImageExtension(originalname)) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+
+    return cb(new BadRequestException(ImageFileErrors.INVALID_FORMAT), false);
   }
 };
