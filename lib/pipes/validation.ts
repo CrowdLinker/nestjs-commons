@@ -36,7 +36,7 @@ export const validationPipeOptions: ValidationPipeOptions = {
  *
  * @extends {NestValidationPipe}
  */
- export class ValidationPipe extends NestValidationPipe {
+export class ValidationPipe extends NestValidationPipe {
   /**
    * Custom entity types that don't need to be validated.
    *
@@ -54,7 +54,7 @@ export const validationPipeOptions: ValidationPipeOptions = {
     @Optional() options?: ValidationPipeOptions,
     entityTypes: ModelEntity[] = [],
   ) {
-    super();
+    super(options);
 
     this.entityTypes = entityTypes;
   }
