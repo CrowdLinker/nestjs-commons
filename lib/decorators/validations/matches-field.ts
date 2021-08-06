@@ -7,8 +7,8 @@ import {
 } from 'class-validator';
 
 /**
- * Decorator used for validation of incoming DTO.
- * Check if the value of the filed that is under check is equal to the value of the property provided(in the same DTO)
+ * Custom validation decorator used to check if one field value
+ * matches the other in the same DTO.
  *
  * @returns {function} Returns validator function
  */
@@ -28,7 +28,7 @@ export function MatchesField(
 }
 
 /**.
- * Checks fields are equal.
+ * Checks if values of two different inputs fields match.
  *
  * @class
  *
@@ -57,6 +57,7 @@ export class MatchesFieldConstraint implements ValidatorConstraintInterface {
 
   defaultMessage(args: ValidationArguments) {
     const [relatedPropertyName] = args.constraints;
-    return `${relatedPropertyName} and ${args.property} don't match`;
+
+    return `${relatedPropertyName} and ${args.property} don't match.`;
   }
 }
