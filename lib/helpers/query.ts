@@ -116,28 +116,46 @@ export const convertQueriedInputsToStringBasedQueries = (
       }
 
       let keyword = '=';
-      let valueType = `:param${lastIndex.count}`;
+      let valueType = ` :param${lastIndex.count}`;
 
+      // Using "between", "not", "brackets" might not be possible with this.
       switch (operatorData._type) {
         case 'in':
           keyword = 'IN';
-          valueType = `(:...param${lastIndex.count})`;
+          valueType = ` (:...param${lastIndex.count})`;
           break;
         case 'like':
           keyword = 'LIKE';
           break;
+        case 'ilike':
+          keyword = 'ILIKE';
+          break;
+        case 'moreThan':
+          keyword = '>';
+          break;
         case 'moreThanOrEqual':
           keyword = '>=';
           break;
+        case 'lessThan':
+          keyword = '<';
+          break;
         case 'lessThanOrEqual':
           keyword = '<=';
+          break;
+        case 'any':
+          keyword = 'ANY';
+          valueType = `(:param${lastIndex.count})`;
+          break;
+        case 'isNull':
+          keyword = 'IS NULL';
+          valueType = '';
           break;
       }
 
       lastIndex.count++;
 
       return {
-        query: `${currentKey} ${keyword} ${valueType}`,
+        query: `${currentKey} ${keyword}${valueType}`,
         paramIndex: lastIndex.count - 1, // Because of line 130.
         value: operatorData._value,
       } as StringQuery;
