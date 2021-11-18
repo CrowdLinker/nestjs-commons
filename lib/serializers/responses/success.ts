@@ -1,3 +1,5 @@
+import { HttpStatus } from '@nestjs/common';
+
 /**
  * Success response type declaration.
  *
@@ -17,7 +19,7 @@ interface SuccessResponse {
  * @implements {SuccessResponse}
  */
 export class SuccessResponseEntity implements SuccessResponse {
-  statusCode = 200;
+  statusCode = HttpStatus.OK;
   success = true;
   data: any = {};
 

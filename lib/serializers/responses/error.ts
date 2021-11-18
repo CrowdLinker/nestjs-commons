@@ -1,3 +1,5 @@
+import { HttpStatus } from '@nestjs/common';
+
 /**
  * Success response type declaration.
  *
@@ -16,7 +18,7 @@ interface ErrorResponse {
  * @implements {ErrorResponse}
  */
 export class ErrorResponseEntity implements ErrorResponse {
-  statusCode = 200;
+  statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
   error: any = {};
 
   constructor(partial: Partial<ErrorResponseEntity>) {

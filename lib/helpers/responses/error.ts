@@ -1,3 +1,4 @@
+import { HttpStatus } from '@nestjs/common';
 import { ErrorResponseEntity } from '../../serializers/responses/error';
 
 /**
@@ -12,7 +13,7 @@ import { ErrorResponseEntity } from '../../serializers/responses/error';
  */
 export const errorResponse = (
   error: any,
-  statusCode = 200,
+  statusCode = HttpStatus.INTERNAL_SERVER_ERROR,
 ): ErrorResponseEntity => {
   return new ErrorResponseEntity({
     statusCode,
