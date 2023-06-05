@@ -9,4 +9,3 @@ export enum AppEnvironment {
     staging = 'staging',
     production = 'production',
   }
-  
