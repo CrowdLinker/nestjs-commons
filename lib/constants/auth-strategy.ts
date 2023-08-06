@@ -3,7 +3,7 @@
  *
  * @constant {string}
  */
-export const AUTH_JWT_STRATEGIES = {
+export const AUTH_STRATEGY = {
   JWT: {
     ADMIN: 'AUTH_STRATEGY_JWT_ADMIN',
     USER: 'AUTH_STRATEGY_JWT_USER',
