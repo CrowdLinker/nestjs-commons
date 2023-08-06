@@ -4,8 +4,8 @@
  * @enum
  */
 export enum AppEnvironment {
-    local = 'local',
-    development = 'development',
-    staging = 'staging',
-    production = 'production',
-  }
+  local = 'local',
+  development = 'development',
+  staging = 'staging',
+  production = 'production',
+}

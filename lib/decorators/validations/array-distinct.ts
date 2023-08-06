@@ -9,7 +9,6 @@ import {
  * 
  * @param {string} property 
  * @param {ValidationOptions?} validationOptions 
-
  */
 export default function ArrayDistinct(
   property: string,
@@ -35,7 +34,7 @@ export default function ArrayDistinct(
           return false;
         },
         defaultMessage(args: ValidationArguments): string {
-          return `${args.property} contains duplicate ${args.constraints[0]} values.`;
+          return `${args.property} must be an array and should not contain duplicate values.`;
         },
       },
     });

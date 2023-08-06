@@ -4,6 +4,8 @@
  * @constant {string}
  */
 export const AUTH_JWT_STRATEGIES = {
-  ADMIN_JWT: 'ADMIN_JWT',
-  USER_JWT: 'USER_JWT',
+  JWT: {
+    ADMIN: 'AUTH_STRATEGY_JWT_ADMIN',
+    USER: 'AUTH_STRATEGY_JWT_USER',
+  }
 };

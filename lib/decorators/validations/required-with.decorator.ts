@@ -47,6 +47,7 @@ export class RequiredWithConstraint implements ValidatorConstraintInterface {
 
   defaultMessage(args: ValidationArguments) {
     const [relatedPropertyName] = args.constraints;
+
     return `${args.property} is required when ${relatedPropertyName} is present`;
   }
 }

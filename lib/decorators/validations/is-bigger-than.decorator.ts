@@ -5,6 +5,7 @@ import {
   ValidatorConstraint,
   ValidatorConstraintInterface,
 } from 'class-validator';
+import isNumber from 'lodash/isNumber';
 
 /**
  * Custom validation decorator used to check one input field is bigger than the other field
@@ -50,8 +51,8 @@ export class IsBiggerThanConstraint implements ValidatorConstraintInterface {
     const relatedValue = (args.object as any)[relatedPropertyName];
   
     return (
-      typeof value === 'number' &&
-      typeof relatedValue === 'number' &&
+      isNumber(value) &&
+      isNumber(relatedValue) &&
       value > relatedValue
     );
   }
