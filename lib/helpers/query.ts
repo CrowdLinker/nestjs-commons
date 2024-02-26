@@ -12,7 +12,7 @@ import {
 import flatMap from 'lodash/flatMap';
 import { isUUID } from 'class-validator';
 import { classToPlain } from 'class-transformer';
-import { NotFoundException } from '@nestjs/common';
+import { BadRequestException } from '@nestjs/common';
 import { SelectQueryBuilder, FindOperator, Raw } from 'typeorm';
 
 /**
@@ -36,7 +36,7 @@ export const validatePostgresUUID = (
   const isValid = isUUID(id);
 
   if (!isValid && throws) {
-    throw new NotFoundException(message);
+    throw new BadRequestException(message);
   }
 
   return isValid;
@@ -264,3 +264,18 @@ export const convertDateToRawBetween = (
     (columnName) =>
       `${columnName} >= '${startDate.toISOString()}' AND ${columnName} <= '${endDate.toISOString()}'`,
   );
+
+/**
+ * Creates an alter sequence query by table & column name.
+ *
+ * @param {string} tableName
+ * @param {string} columnName
+ *
+ * @returns {string}
+ */
+export const createAlterSeqQueryForPostgresTables = (
+  tableName: string,
+  columnName = 'readableId',
+): string => {
+  return `ALTER SEQUENCE "${tableName}_${columnName}_seq" RESTART WITH 1`;
+};
