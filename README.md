@@ -95,7 +95,7 @@ export class AppConfigService implements AppConfigServiceInterface {
 
 ## Important Points To Note
 
-- Code is written in Typescript (v4.3.4)
+- Code is written in Typescript (v5.4.3)
 
 ## Contributors
 
