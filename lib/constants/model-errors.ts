@@ -4,10 +4,12 @@
  * @interface
  */
 export interface ModelErrorsInterface {
+  EXPIRED?: string;
   INVALID?: string;
   DISABLED?: string;
   NOT_FOUND: string;
   DUPLICATE_FOUND?: string;
+  [key: string]: string;
 }
 
 /**
@@ -16,6 +18,7 @@ export interface ModelErrorsInterface {
  * @constant
  */
 export const ModelErrors: ModelErrorsInterface = {
+  EXPIRED: 'Record has expired.',
   INVALID: 'Record is invalid.',
   DISABLED: 'Record is not accessible.',
   NOT_FOUND: 'Record not found.',
