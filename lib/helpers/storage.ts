@@ -13,6 +13,7 @@ import { extname } from 'path';
 import { promisify } from 'util';
 import { BadRequestException } from '@nestjs/common';
 import { MulterFileFilter, UploadedFile } from '../interfaces/file';
+import { VALID_FILE_NAME_REGEX } from '../constants/storage';
 
 /**
  * Check if a file exists at a given path.
@@ -199,6 +200,12 @@ export const multerCsvFileFilter: MulterFileFilter = (
   // https://github.com/expressjs/multer/issues/555
   const { mimetype, originalname } = file;
 
+  if(!isValidFileName(originalname)) {
+    cb(new BadRequestException(CsvFileErrors.INVALID_FORMAT), false);
+
+    return;
+  }
+
   if (mimetype && mimetype.length && isCSVMimeType(mimetype)) {
     cb(null, true);
   } else if (isCSVExtension(originalname)) {
@@ -226,6 +233,12 @@ export const multerImageFileFilter: MulterFileFilter = (
 ) => {
   const { mimetype, originalname } = file;
 
+  if(!isValidFileName(originalname)) {
+    cb(new BadRequestException(ImageFileErrors.INVALID_FORMAT), false);
+
+    return;
+  }
+
   if (mimetype && mimetype.length && isImageMimeType(mimetype)) {
     cb(null, true);
   } else if (isImageExtension(originalname)) {
@@ -236,3 +249,13 @@ export const multerImageFileFilter: MulterFileFilter = (
     return cb(new BadRequestException(ImageFileErrors.INVALID_FORMAT), false);
   }
 };
+
+
+function isValidFileName(fileName: string): boolean {
+  // File name should not contain any control characters or any file paths
+  if (fileName.match(VALID_FILE_NAME_REGEX)) {
+    return true;
+  }
+
+  return false;
+}

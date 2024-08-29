@@ -23,3 +23,9 @@ export const FILE_SIZE = {
         TEN: 10_485_760,
     }
 }
+
+/**
+ * Constant defining the regex to validate file
+ */
+export const VALID_FILE_NAME_REGEX =
+  /^[a-zA-Z0-9-_]+(\.[a-zA-Z0-9-_]+)?$/;
