@@ -251,11 +251,26 @@ export const multerImageFileFilter: MulterFileFilter = (
 };
 
 
-export function isValidFileName(fileName: string): boolean {
+export function isValidFileName(fileName: string, regex = VALID_FILE_NAME_REGEX): boolean {
+
+  if(!isValidRegexPattern(regex)) {
+    throw new Error('Invalid regex pattern');
+  }
+
   // File name should not contain any control characters or any file paths
-  if (fileName.match(VALID_FILE_NAME_REGEX)) {
+  if (fileName.match(regex)) {
     return true;
   }
 
   return false;
+}
+
+export function isValidRegexPattern(pattern: string | RegExp): boolean {
+  try {
+    new RegExp(pattern);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
 }
