@@ -251,7 +251,7 @@ export const multerImageFileFilter: MulterFileFilter = (
 };
 
 
-function isValidFileName(fileName: string): boolean {
+export function isValidFileName(fileName: string): boolean {
   // File name should not contain any control characters or any file paths
   if (fileName.match(VALID_FILE_NAME_REGEX)) {
     return true;
