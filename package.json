@@ -1,6 +1,6 @@
 {
   "name": "@crowdlinker/nestjs-commons",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Commons for NestJS based projects",
   "author": "Crowdlinker Inc.",
   "license": "MIT",
