@@ -1,27 +1,20 @@
 import { HttpStatus } from '@nestjs/common';
-
-/**
- * Success response type declaration.
- *
- * @interface
- */
-interface ErrorResponse {
-  statusCode: number;
-  error: any;
-}
+import { ErrorResponse } from '../../interfaces/response';
 
 /**
  * Error response entity used for serializing response data.
  *
  * @class
  *
- * @implements {ErrorResponse}
+ * @implements {ErrorResponse<T>}
  */
-export class ErrorResponseEntity implements ErrorResponse {
+export class ErrorResponseEntity<T extends any = any>
+  implements ErrorResponse<T>
+{
   statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
-  error: any = {};
+  error: T = {} as T;
 
-  constructor(partial: Partial<ErrorResponseEntity>) {
+  constructor(partial: Partial<ErrorResponseEntity<T>>) {
     Object.assign(this, partial);
   }
 }
