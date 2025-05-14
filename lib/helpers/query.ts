@@ -216,17 +216,17 @@ export const generateRelationalSearchQueryBuilder = <T>(
 /**
  * Retuns an object matching the structure for paginated results.
  *
- * @param {any[]} result
+ * @param {T[]} data
  * @param {number} count
  * @param {PaginationQueryParamInterface} paginationParams
  *
- * @returns {PaginatedData}
+ * @returns {PaginatedData<T>}
  */
-export const generatePaginatedResult = (
-  data: any[],
+export const generatePaginatedResult = <T>(
+  data: T[],
   count: number,
   paginationParams: PaginationQueryParamInterface,
-): PaginatedData => {
+): PaginatedData<T> => {
   const { page, limit, orderBy, order } = paginationParams;
 
   return {
@@ -245,7 +245,7 @@ export const generatePaginatedResult = (
         by: orderBy,
       },
     },
-  } as PaginatedData;
+  } as PaginatedData<T>;
 };
 
 /**
