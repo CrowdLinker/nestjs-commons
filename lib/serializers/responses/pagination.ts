@@ -5,10 +5,10 @@ import { PaginatedMetaData } from '../../interfaces/pagination';
  *
  * @interface
  */
-interface PaginationResponse {
+interface PaginationResponse<T> {
   statusCode: number;
   success: boolean;
-  data: any[];
+  data: T[];
   meta: PaginatedMetaData;
 }
 
@@ -17,12 +17,12 @@ interface PaginationResponse {
  *
  * @class
  *
- * @implements {PaginationResponse}
+ * @implements {PaginationResponse<T>}
  */
-export class PaginationResponseEntity implements PaginationResponse {
+export class PaginationResponseEntity<T> implements PaginationResponse<T> {
   statusCode = 200;
   success = true;
-  data: any = [];
+  data: T[] = [];
   meta: PaginatedMetaData;
 
   /**
@@ -30,9 +30,9 @@ export class PaginationResponseEntity implements PaginationResponse {
    *
    * @constructs
    *
-   * @param {Partial<PaginationResponseEntity>} partial
+   * @param {Partial<PaginationResponseEntity<T>>} partial
    */
-  constructor(partial: Partial<PaginationResponseEntity>) {
+  constructor(partial: Partial<PaginationResponseEntity<T>>) {
     Object.assign(this, partial);
   }
 }

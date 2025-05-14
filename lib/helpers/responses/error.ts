@@ -6,15 +6,15 @@ import { ErrorResponseEntity } from '../../serializers/responses/error';
  *
  * @function
  *
- * @param {any} data
+ * @param {T} error
  * @param {number} statusCode
  *
- * @returns {ErrorResponseEntity}
+ * @returns {ErrorResponseEntity<T>}
  */
-export const errorResponse = (
-  error: any,
-  statusCode = HttpStatus.INTERNAL_SERVER_ERROR,
-): ErrorResponseEntity => {
+export const errorResponse = <T>(
+  error: T,
+  statusCode: number = HttpStatus.INTERNAL_SERVER_ERROR,
+): ErrorResponseEntity<T> => {
   return new ErrorResponseEntity({
     statusCode,
     error,

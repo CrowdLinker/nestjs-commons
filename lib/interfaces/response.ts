@@ -12,7 +12,7 @@ export interface RedirectResponse {
  *
  * @interface
  */
-export interface ErrorResponse<T extends any = any> {
+export interface ErrorResponse<T> {
   statusCode: number;
   error: T;
 }
@@ -22,7 +22,7 @@ export interface ErrorResponse<T extends any = any> {
  *
  * @interface
  */
-export interface SuccessResponse<T extends any = any> {
+export interface SuccessResponse<T> {
   statusCode: number;
   success: boolean;
   data: T;

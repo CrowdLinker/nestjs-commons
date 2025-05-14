@@ -8,9 +8,7 @@ import { ErrorResponse } from '../../interfaces/response';
  *
  * @implements {ErrorResponse<T>}
  */
-export class ErrorResponseEntity<T extends any = any>
-  implements ErrorResponse<T>
-{
+export class ErrorResponseEntity<T> implements ErrorResponse<T> {
   statusCode = HttpStatus.INTERNAL_SERVER_ERROR;
   error: T = {} as T;
 

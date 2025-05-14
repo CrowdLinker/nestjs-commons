@@ -39,7 +39,7 @@ export interface PaginationQueryParamInterface extends InputInterface {
  *
  * @interface
  */
-export interface PaginatedData<T = any> {
+export interface PaginatedData<T> {
   data: T[];
   meta: PaginatedMetaData;
 }

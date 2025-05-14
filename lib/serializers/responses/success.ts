@@ -8,9 +8,7 @@ import { SuccessResponse } from '../../interfaces/response';
  *
  * @implements {SuccessResponse<T>}
  */
-export class SuccessResponseEntity<T extends any = any>
-  implements SuccessResponse<T>
-{
+export class SuccessResponseEntity<T> implements SuccessResponse<T> {
   statusCode = HttpStatus.OK;
   success = true;
   data: T = {} as T;

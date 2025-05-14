@@ -6,15 +6,15 @@ import { PaginationResponseEntity } from '../../serializers/responses/pagination
  *
  * @function
  *
- * @param {any} data
+ * @param {PaginatedData<T>} paginatedData
  * @param {number} statusCode
  *
- * @returns {PaginationResponseEntity}
+ * @returns {PaginationResponseEntity<T>}
  */
-export const paginationResponse = (
-  paginatedData: PaginatedData,
-  statusCode = 200,
-): PaginationResponseEntity => {
+export const paginationResponse = <T>(
+  paginatedData: PaginatedData<T>,
+  statusCode: number = 200,
+): PaginationResponseEntity<T> => {
   const { data, meta } = paginatedData;
 
   return new PaginationResponseEntity({
