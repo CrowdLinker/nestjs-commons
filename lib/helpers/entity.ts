@@ -230,7 +230,7 @@ export const setEntityVariableValues = <T extends ModelEntity>(
 
     setEnumValueInLoop(partial, enums, variable);
 
-    setFloatValueInLoop(partial, integers, variable);
+    setFloatValueInLoop(partial, floats, variable);
 
     setIntegerValueInLoop(partial, integers, variable);
 
